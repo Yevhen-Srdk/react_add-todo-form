@@ -35,7 +35,7 @@ export const App = () => {
 
     const maxId = todos.length ? Math.max(...todos.map(todo => todo.id)) : 0;
     const userNumberId = Number(userId);
-    const user = usersFromServer.find(u => u.id === userNumberId);
+    const user = usersFromServer.find(userItem => userItem.id === userNumberId);
     const newTodo = {
       id: maxId + 1,
       title: title.trim(),
@@ -65,25 +65,31 @@ export const App = () => {
 
       <form action="/api/todos" method="POST" onSubmit={handleSubmit}>
         <div className="field">
+          <label htmlFor="titleInput" id="titleInput">
+            Title
+          </label>
           <input
             type="text"
             data-cy="titleInput"
             placeholder="Enter a title"
+            name="titleInput"
             value={title}
             onChange={handleTitleChange}
           />
           {titleError && <span className="error">Please enter a title</span>}
         </div>
 
+        <label htmlFor="userSelect" id="userSelect">
+          User
+        </label>
         <div className="field">
           <select
+            name="userSelect"
             data-cy="userSelect"
             value={userId}
             onChange={handleSelectChange}
           >
-            <option value="" disabled>
-              Choose a user
-            </option>
+            <option value="">Choose a user</option>
             {usersFromServer.map(userFromServer => (
               <option key={userFromServer.id} value={userFromServer.id}>
                 {userFromServer.name}
