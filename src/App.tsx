@@ -65,12 +65,11 @@ export const App = () => {
 
       <form action="/api/todos" method="POST" onSubmit={handleSubmit}>
         <div className="field">
-          <label htmlFor="titleInput" id="titleInput">
-            Title
-          </label>
+          <label htmlFor="titleInput">Title</label>
           <input
             type="text"
             data-cy="titleInput"
+            id="titleInput"
             placeholder="Enter a title"
             name="titleInput"
             value={title}
@@ -79,11 +78,10 @@ export const App = () => {
           {titleError && <span className="error">Please enter a title</span>}
         </div>
 
-        <label htmlFor="userSelect" id="userSelect">
-          User
-        </label>
+        <label htmlFor="userSelect">User</label>
         <div className="field">
           <select
+            id="userSelect"
             name="userSelect"
             data-cy="userSelect"
             value={userId}
